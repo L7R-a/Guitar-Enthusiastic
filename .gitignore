@@ -1,0 +1,111 @@
+# Node.js dependencies
+node_modules/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*.local
+
+# Next.js build directory
+.next/
+out/
+
+# Gatsby files
+.cache/
+
+# Create React App build directory
+build/
+
+# Generated files
+dist/
+.venv
+venv
+
+# Mac system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Coverage directory used by testing frameworks
+coverage/
+
+# TypeScript build outputs
+*.tsbuildinfo
+*.d.ts
+*.d.ts.map
+
+# Parcel cache
+.cache/
+
+# Jest cache
+.jest/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Local npm package configurations
+.npmrc
+.pnpmfile.cjs
+
+# eslint cache
+.eslintcache
+
+# Stylelint cache
+.stylelintcache
+
+# Bower
+bower_components/
+
+# Yarn v2
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Production environment variables
+.env.production
+
+# dotenv environment variable files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Misc
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.log
+*.tgz
+*.zip
+*.tar.gz
+
+# Webpack's intermediate directory
+.cache-loader/
