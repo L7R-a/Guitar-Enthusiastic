@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Lemands";
+}
+
+.LandingTitle{
+    font-family: "Lemands";
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.LandingDialogButtons{
+    font-size: x-large;
+    font-family:"Roboto";
+    font-weight: bold;
+    color: #202c3f;
+    border: 1px solid #ddcdcd;
+}
+
+.close-spacing {
+    margin-bottom: 0; 
+    margin-top: 0;    
+}
+
+/* Center the content vertically and horizontally */
+.centerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    
+}
+
+/* Logo styling */
+.Logo {
+    border-radius: 10%;
+    border: 2px solid #ddcdcd
+}
+
+.LandingLogo {
+    border-radius: 10%;
+    border: 10px solid #ddcdcd
+}
+
+.LandingButtons{
+    min-width:  "10rem";
+    margin: 10px;
+    font-family:"Roboto";
+    font-weight: bold;
+    border: 1px solid #ddcdcd
+
+}
+
+.LandingCards {
+    font-family: "Lemands";
+    font-family:"Roboto";
+    font-size: large;
+     font-weight: bold;
+     border: 10px solid #ddcdcd;
+ }
+.LandingCards .p-dialog-header {
+   font-family: "Lemands";
+   font-size: 5rem !important;
+   text-align: center;
+    font-weight: bold;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.gap-2 {
+    gap: 0.5rem; 
+}
+
+.label{
+    margin-right: 15%;
+}
+
+.signUpTable td{
+    padding-bottom: 4%;
+
+}
+
+.signUpTable{
+    overflow-y: auto;
+}
