@@ -217,7 +217,7 @@ function RequestPage() {
             <ToolBar hideSearch={true} />
 
             {/* Upload file dialog */}
-            <Dialog header="Upload PDF file" visible={showFileUpload} modal onHide={handleDialogHide} draggable={false}>
+            <Dialog header={<span className="TitleInDialog ">Upload PDF File</span>} visible={showFileUpload} modal onHide={handleDialogHide} draggable={false}>
                 <Tooltip target=".custom-choose-btn" content="Choose" position="bottom" />
                 <Tooltip target=".custom-upload-btn" content="Upload" position="bottom" />
                 <Tooltip target=".custom-cancel-btn" content="Clear" position="bottom" />
@@ -227,7 +227,7 @@ function RequestPage() {
                     chooseOptions={chooseOptions}/>
                 <div className="inline-flex flex-column gap-2">
                     <label htmlFor="comment" className="requestText mt-4" style={{fontSize:"large"}}>
-                        Additional Comments
+                        Additional Comments:
                     </label>
                     <InputTextarea autoResize value={comment} onChange={(e) => setComment(e.target.value)} rows={5} cols={100} style={{ width: '100%' }} />
                 </div>
