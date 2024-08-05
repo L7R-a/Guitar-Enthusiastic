@@ -119,7 +119,7 @@ function Profile() {
                             </tr>
                             <tr>
                                 <td>Password:</td>
-                                <td>{data[0].password}</td>
+                                <td>{passwordTemplate(data[0])}</td>
                             </tr>
                             <tr>
                                 <td>Joined:</td>
