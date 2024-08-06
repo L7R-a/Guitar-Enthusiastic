@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { TabView, TabPanel } from 'primereact/tabview';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import './LandingPage.css';
 import 'primeicons/primeicons.css';
 import {Card} from 'primereact/card';
 

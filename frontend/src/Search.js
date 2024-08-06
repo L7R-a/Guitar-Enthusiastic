@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import 'primeicons/primeicons.css';
 import { Row, Container } from "react-bootstrap";
-import ToolBar from './ToolBar.js';
+import ToolBar from './components/ToolBar.js';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { FaUser, FaMusic, FaMicrophone} from 'react-icons/fa';
+import { propTypes } from 'react-bootstrap/esm/Image.js';
 
 function Search() {
     const [isEmptySearchTextVisible, setIsEmptySearchTextVisible] = React.useState(true); //Check if the user has entered a search text
@@ -15,7 +16,7 @@ function Search() {
         const searchText = localStorage.getItem('searchText');
         
         // If there's saved search text, it means the search bar isn't empty. Fetch the search results
-        if (searchText) {
+        if (searchText) { 
           setIsEmptySearchTextVisible(false);
           fetch(`http://localhost:5000/api/requests/search/${searchText}`)
                 .then((res) => {

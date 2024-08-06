@@ -3,7 +3,7 @@ import { Image } from "react-bootstrap";
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import 'primeicons/primeicons.css';
-import Logo from './images/Logo.png';
+import Logo from '../assets/images/Logo.png';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputText } from 'primereact/inputtext';
 import { v4 as uuidv4 } from 'uuid';

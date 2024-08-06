@@ -9,7 +9,7 @@ import { ProgressBar } from 'primereact/progressbar';
 import { Tag } from 'primereact/tag';
 import { Toast } from 'primereact/toast';
 import { Tooltip } from 'primereact/tooltip';
-import ToolBar from './ToolBar.js';
+import ToolBar from './components/ToolBar.js';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { FaUser, FaMusic, FaMicrophone, FaCommentDots, FaCalendarAlt,FaFilePdf } from 'react-icons/fa';
 

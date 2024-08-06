@@ -7,9 +7,10 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import './LandingPage.css';
 import 'primeicons/primeicons.css';
-import Logo from './images/Logo.png';
+import Logo from './assets/images/Logo.png';
 import { Toast } from 'primereact/toast';
-
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function LandingPage() {
     const navigate = useNavigate();  // useNavigate hook for navigation
@@ -20,17 +21,6 @@ function LandingPage() {
     const [visibleRight, setVisibleRight] = useState(false);
     const [visibleLogin, setVisibleLogin] = useState(false);
     const [visibleSignup, setVisibleSignup] = useState(false);
-
-    //Signup fields
-    const [signupName, setSignupName] = useState('');
-    const [signupUsername, setSignupUsername] = useState('');
-    const [signupEmail, setSignupEmail] = useState('');
-    const [signupPassword, setSignupPassword] = useState('');
-    const [signupRePassword, setSignupRePassword] = useState('');
-
-    //Login fields
-    const [loginUsername, setLoginUsername] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
 
     //Dialog functions
     const showLeftDialog = () => {setVisibleLeft(true);};
@@ -47,93 +37,7 @@ function LandingPage() {
             <Button label="Login" className='ButtonsNav'  onClick={() => setVisibleLogin(true)} />
             <Button label="Signup" className='ButtonsNav' onClick={() => setVisibleSignup(true)} />
         </React.Fragment>
-    );
-
-
-    const handleLogin = () => {
-        if (loginUsername === '' || loginPassword === '') {
-            toast.current.show({severity:'error', summary: 'Error', detail:'All fields are required', life: 5000});
-            return;
-        }
-
-        //Fileds are not null, login user
-        fetch(`http://localhost:5000/api/users/${loginUsername}/${loginPassword}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-                // console.log(data);
-            if(data){
-                localStorage.setItem('user', JSON.stringify(data));
-                localStorage.setItem('searchText', "");
-                navigate('/Search');
-            } 
-            else {
-                toast.current.show({severity:'error', summary: 'Error', detail:'Invalid username or password', life: 5000});
-            }
-        })
-        .catch(error => {
-            // console.error('There was an error logging in!', error);
-            toast.current.show({severity:'error', summary: 'Error', detail:'Wrong username or password.', life: 5000});
-            return;
-        });
-
-    };
-
-    const handleSignup = () => {
-        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-        // Validate fields
-        if (signupName === '' || signupUsername === '' || signupEmail === '' || signupPassword === '' || signupRePassword === '') {
-            toast.current.show({severity:'error', summary: 'Error', detail:'All fields are required', life: 5000});
-            return;
-        }
-        if(!passwordRegex.test(signupPassword)){
-            toast.current.show({severity:'error', summary: 'Error', detail:'Password must contain at least 8 characters, one uppercase letter, one number and one special character', life: 5000});
-            return;
-        }
-        if (!emailRegex.test(signupEmail)) {
-            toast.current.show({severity:'error', summary: 'Error', detail:'Invalid email address', life: 5000});
-            return;
-        }
-        if (signupPassword !== signupRePassword) {
-            toast.current.show({severity:'error', summary: 'Error', detail:'Passwords do not match', life: 5000});
-            return;
-        }
-
-        //All fields are valid, create a new user
-        fetch('http://localhost:5000/api/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username: signupUsername, name: signupName, email: signupEmail, password: signupPassword})
-        })
-        .then(response => {
-            if (!response.ok) {
-                if (response.status === 400) {
-                    throw new Error('Username already exists.');
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
-            }
-            return response.json();  // Proceed to parse JSON if response is OK
-        })    
-        .then(data => {
-            // console.log(data);
-            setVisibleSignup(false);  
-            setVisibleLogin(true);  
-            toast.current.show({severity:'success', summary: 'Success', detail:'Account created', life: 5000});
-        })
-        .catch(error => {
-            toast.current.show({severity:'error', summary: 'Error', detail:error.message, life: 5000});
-            return;
-        });
-    };
+    );    
 
     return (
         <Container fluid className="main-container">
@@ -166,33 +70,8 @@ function LandingPage() {
             </Dialog>
 
             {/* LOG IN DIALOG */}
-            <Dialog
-                visible={visibleLogin}
-                modal
-                className=" DialogContainer"
-                onHide={() => {if (!visibleLogin) return; setVisibleLogin(false); }}
-                content={({ hide }) => (
-                    <div className="flex flex-column px-8 py-5 gap-4" style={{ borderRadius: '12px' }}>
-                        <Image src={Logo} width="75" height="75" className="block mx-auto Logo close-spacing" />
-                        <p className="TitleInDialog close-spacing">Guitar Enthusiast</p>
-                        <p className="TitleInDialog close-spacing">Login</p>
-                        <div className="inline-flex flex-row gap-2">
-                            <label htmlFor="LoginUsername" className="text-primary-50 font-semibold mt-2">
-                                Username:
-                            </label>
-                            <InputText id="LoginUsername" label="Username" onChange={(e) => setLoginUsername(e.target.value)}></InputText>
-                        </div>
-                        <div className="inline-flex flex-row gap-2">
-                            <label htmlFor="LoginPassword" className="text-primary-50 font-semibold mt-2 mr-1">
-                                Password:
-                            </label>
-                            <InputText id="LoginPassword" label="Password" onChange={(e) => setLoginPassword(e.target.value)} type="password"></InputText>
-                        </div>
-                        <div className="flex align-items-center">
-                            <Button label="Login" raised onClick={() => handleLogin()} severity="success" className="p-2 w-full mr-3 LandingDialogButtons"></Button>
-                            <Button label="Cancel" raised onClick={(e) => hide(e)} severity="danger" className="p-2 w-full mr-3 LandingDialogButtons"></Button>
-                        </div>
-                    </div>
+            <Dialog visible={visibleLogin} modal className=" DialogContainer" onHide={() => {if (!visibleLogin) return; setVisibleLogin(false); }}content={({ hide }) => (
+                    <Login hide={hide} toast={toast}/>
                 )}
             ></Dialog>
 
@@ -203,72 +82,7 @@ function LandingPage() {
                 className="DialogContainer"
                 onHide={() => {if (!visibleSignup) return; setVisibleSignup(false); }}
                 content={({ hide }) => (
-                    <div className="flex flex-column px-8 py-5 gap-4 " style={{ borderRadius: '12px' }}>
-                        <Image src={Logo} width="75" height="75" className="block mx-auto Logo" />
-                        <p className="TitleInDialog close-spacing">Guitar Enthusiast</p>
-                        <p className="TitleInDialog close-spacing">Signup</p>
-                        <div className="inline-flex flex-row gap-2 align-items-center">
-                            <table className="signUpTable">
-                                <tbody>
-                                    <tr> 
-                                        <td>                        
-                                            <label htmlFor="SignUpName" className="text-primary-50 font-semibold">
-                                                Name: 
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <InputText id="SignUpName" label="Username" onChange={(e)=>setSignupName(e.target.value)} > </InputText>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label htmlFor="SignUpUsername" className="text-primary-50 font-semibold">
-                                                Username:
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <InputText id="SignUpUsername" label="Username"  onChange={(e)=>setSignupUsername(e.target.value)}></InputText>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> 
-                                            <label htmlFor="SignUpEmail" className="text-primary-50 font-semibold" >
-                                                Email:
-                                            </label>
-                                        </td>  
-                                        <td>
-                                            <InputText id="SignUpEmail" label="Username"  onChange={(e)=>setSignupEmail(e.target.value)}></InputText>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label htmlFor="SignUpPassword" className="text-primary-50 font-semibold" >
-                                                Password:
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <InputText id="SignUpPassword" label="Password" onChange={(e)=>setSignupPassword(e.target.value)} type="password"></InputText>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label htmlFor="signUpRePassword" className="text-primary-50 font-semibold" style={{marginRight:'22%'}}>
-                                                Re-type password:
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <InputText id="signUpRePassword" label="Password"  onChange={(e)=>setSignupRePassword(e.target.value)} type="password"></InputText>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div className="flex align-items-center gap-2">
-                            <Button label="Signup" onClick={(e) => handleSignup()} raised severity="success" className="p-2 w-full mr-3 LandingDialogButtons"></Button>
-                            <Button label="Cancel" onClick={(e) => hide(e)} raised severity="danger" className="p-2 w-full mr-3 LandingDialogButtons"></Button>
-                        </div>
-                    </div>
+                   <Signup hide={hide} setVisibleLogin={setVisibleLogin} setVisibleSignup={setVisibleSignup} toast={toast}></Signup>
                 )}
             ></Dialog>
         </Container>

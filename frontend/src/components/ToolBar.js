@@ -5,7 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { InputIcon } from 'primereact/inputicon';
 import { IconField } from 'primereact/iconfield';
 import { Image } from 'primereact/image';
-import Logo from './images/Logo.png';
+import Logo from '../assets/images/Logo.png';
 import { useNavigate } from 'react-router-dom';
 import { Dialog } from 'primereact/dialog';
 import Profile from './Profile';

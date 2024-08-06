@@ -8,7 +8,9 @@ const db = require('../db'); // GET DATABASE CONNECTION (note: ../db because db 
 //POST: ADD A NEW USER
 //PUT: UPDATE A USER
 //DELETE: REMOVE A USER
-//(note: only one endpoint should have the same method and path in the same router file. Frontend will call these endpoints passing the specified method and path to avoid confusion)
+
+//(note: only one endpoint should have the same method and path in the same router file.
+// Frontend will call these endpoints passing the specified method and path to avoid confusion)
 
 // GET ALL USERS
 // Specify the method and path for this endpoint. req is the input received, res is the output that will be sent.
@@ -48,9 +50,26 @@ router.post('/', (req, res) => {
     });
   })
 
+  //TODO: Do swagger hub documentation for this endpoint
+  //TODO: Do testing for mocca for this endpoint
+  //TODO: Make Swagger file. Hide it with gitignore. 
+  //TODO: Change Localhost to url in frontend & backend.
+  //TODO: Wait how to figure out testing for react.
 // Get a user by their username and password
 router.get('/:username/:password', (req, res) => {
   const { username, password } = req.params;
+
+  db.query('SELECT * FROM users WHERE BINARY username = ? AND BINARY password = ?', [username, password], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(results[0]);
+  });
+});
+
+// Get a user by their username and password
+router.post('/login', (req, res) => {
+  const { username, password } = req.body;
 
   db.query('SELECT * FROM users WHERE BINARY username = ? AND BINARY password = ?', [username, password], (err, results) => {
     if (err) {
@@ -83,21 +102,5 @@ router.put('/replies/:id', (req, res) => {
     res.json(result);
   });
 });
-
-//Get a user by their username
-// router.get('/:username', (req, res) => {
-//   const { username } = req.params;
-
-//   db.query('SELECT * FROM users WHERE username = ?', [username], (err, results) => {
-//     if (err) {
-//       return res.status(500).json({ error: err.message });
-//     }
-//     if (results.length > 0) {
-//       res.json({ exists: true });
-//     } else {
-//       res.json({ exists: false });
-//     }
-//   });
-// });
 
 module.exports = router;
