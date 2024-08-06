@@ -1,0 +1,515 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "APIs For Requests",
+    "description": "API Documentation Requests",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api/requests",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get all requests.",
+        "description": "Endpoint used to get all requests.",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved all requests.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "user": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "song": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "artist": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "number_of_replies": {
+                    "type": "string",
+                    "example": "number"
+                  },
+                  "link": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new request.",
+        "description": "Endpoint used to add a new request.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "user": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "song": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "artist": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "link": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "userId": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "description": "Request data."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully added the request.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "user": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "song": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "artist": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "number_of_replies": {
+                  "type": "number",
+                  "example": 0
+                },
+                "link": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "userId": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/{text}": {
+      "get": {
+        "summary": "Search for requests.",
+        "description": "Endpoint used to search for requests by song, artist, or user.",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The text to search for."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the search results.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "user": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "song": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "artist": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "number_of_replies": {
+                    "type": "string",
+                    "example": "number"
+                  },
+                  "link": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "summary": "Get request by ID.",
+        "description": "Endpoint used to get a request by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the request.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "user": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "song": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "artist": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "number_of_replies": {
+                  "type": "string",
+                  "example": "number"
+                },
+                "link": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "userId": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "Request not found.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Increment number of replies by request ID.",
+        "description": "Endpoint used to increment the number of replies for a request by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the request.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "Request not found.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "get": {
+        "summary": "Get requests by user ID.",
+        "description": "Endpoint used to get requests by user ID.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the user."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the requests.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "user": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "song": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "artist": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "number_of_replies": {
+                    "type": "string",
+                    "example": "number"
+                  },
+                  "link": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

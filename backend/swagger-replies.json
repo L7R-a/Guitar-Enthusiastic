@@ -1,0 +1,326 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "APIs For Replies",
+    "description": "API Documentation Replies",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api/replies",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "summary": "Add a new reply with a PDF file.",
+        "description": "Endpoint used to add a new reply with a PDF file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "pdf",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "The PDF file to upload."
+          },
+          {
+            "name": "request_id",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "The ID of the request."
+          },
+          {
+            "name": "username",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "The username of the person replying."
+          },
+          {
+            "name": "comment",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "The comment for the reply."
+          },
+          {
+            "name": "userId",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "The ID of the user."
+          },
+          {
+            "name": "song",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "The song related to the reply."
+          },
+          {
+            "name": "artist",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "The artist related to the reply."
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "request_id": {
+                  "example": "any"
+                },
+                "username": {
+                  "example": "any"
+                },
+                "comment": {
+                  "example": "any"
+                },
+                "userId": {
+                  "example": "any"
+                },
+                "song": {
+                  "example": "any"
+                },
+                "artist": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully added the reply.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "request_id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "userId": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "song": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "artist": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{request_id}": {
+      "get": {
+        "summary": "Get replies by request ID.",
+        "description": "Endpoint used to obtain replies by request ID.",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the replies.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "song": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "artist": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "pdf": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "get": {
+        "summary": "Get replies by user ID.",
+        "description": "Endpoint used to obtain replies by user ID.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ID of the user."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the replies.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "song": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "artist": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "pdf": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

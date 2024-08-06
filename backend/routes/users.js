@@ -15,6 +15,25 @@ const db = require('../db'); // GET DATABASE CONNECTION (note: ../db because db 
 // GET ALL USERS
 // Specify the method and path for this endpoint. req is the input received, res is the output that will be sent.
 router.get('/', (req, res) => {
+    // #swagger.description = 'Endpoint to retrieve all users.'
+    // #swagger.summary = 'Get all users.'
+    /* #swagger.responses[500] = {
+        description: 'Internal server error.',
+        schema: { error: 'string' }
+    } */
+    /* #swagger.responses[200] = {
+          description: 'Successfully retrieved all users.',
+          schema: [{
+            id: 'number',
+            username: 'string',
+            name: 'string',
+            email: 'string',
+            password: 'string',
+            requestsNum: 'number',
+            repliesNum: 'number'
+          }]
+    } */
+
   //Query the database for all users. 
   db.query('SELECT * FROM users', (err, results) => {         //(err, results) is a callback function that will be called when the query is done.
     if (err) {
@@ -27,6 +46,36 @@ router.get('/', (req, res) => {
 
 // ADD A NEW USER
 router.post('/', (req, res) => {
+  // #swagger.description = 'Endpoint to add a new user.'
+    // #swagger.summary = 'Add a new user.'
+    /* #swagger.parameters['body'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                username: 'string',
+                name: 'string',
+                email: 'string',
+                password: 'string'
+            },
+            description: 'User data.'
+    } */
+    /* #swagger.responses[500] = {
+        description: 'Internal server error.',
+        schema: { error: 'string' }
+    } */
+    /* #swagger.responses[400] = {
+        description: 'Username already exists.',
+        schema: { error: 'string' }
+    } */
+    /* #swagger.responses[201] = {
+          description: 'Successfully added the user.',
+          schema: {
+            id: 'number',
+            username: 'string',
+            email: 'string'
+          }
+    } */
+
   // Get the username and email from the request body.
   const { username, name, email, password} = req.body;
 
@@ -50,25 +99,39 @@ router.post('/', (req, res) => {
     });
   })
 
-  //TODO: Do swagger hub documentation for this endpoint
   //TODO: Do testing for mocca for this endpoint
-  //TODO: Make Swagger file. Hide it with gitignore. 
   //TODO: Change Localhost to url in frontend & backend.
   //TODO: Wait how to figure out testing for react.
-// Get a user by their username and password
-router.get('/:username/:password', (req, res) => {
-  const { username, password } = req.params;
-
-  db.query('SELECT * FROM users WHERE BINARY username = ? AND BINARY password = ?', [username, password], (err, results) => {
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.json(results[0]);
-  });
-});
 
 // Get a user by their username and password
 router.post('/login', (req, res) => {
+      // #swagger.description = 'Endpoint to login a user by their username and password.'
+    // #swagger.summary = 'Login user.'
+    /* #swagger.parameters['body'] = {
+            in: 'body',
+            required: true,
+            schema: {
+                username: 'string',
+                password: 'string'
+            },
+            description: 'Login data.'
+    } */
+    /* #swagger.responses[500] = {
+        description: 'Internal server error.',
+        schema: { error: 'string' }
+    } */
+    /* #swagger.responses[200] = {
+          description: 'Successfully logged in the user.',
+          schema: {
+            id: 'number',
+            username: 'string',
+            name: 'string',
+            email: 'string',
+            password: 'string',
+            requestsNum: 'number',
+            repliesNum: 'number'
+          }
+    } */
   const { username, password } = req.body;
 
   db.query('SELECT * FROM users WHERE BINARY username = ? AND BINARY password = ?', [username, password], (err, results) => {
@@ -81,6 +144,22 @@ router.post('/login', (req, res) => {
 
 //Update user requestNum by 1
 router.put('/:id', (req, res) => {
+  // #swagger.description = 'Endpoint to increment the requestNum of a user by their ID.'
+    // #swagger.summary = 'Increment requestNum by user ID.'
+    /* #swagger.parameters['id'] = {
+            in: 'path',
+            type: 'string',
+            required: true,
+            description: 'The ID of the user.'
+    } */
+    /* #swagger.responses[500] = {
+        description: 'Internal server error.',
+        schema: { error: 'string' }
+    } */
+    /* #swagger.responses[200] = {
+          description: 'Successfully updated the user.',
+          schema: { message: 'string' }
+    } */
   const { id } = req.params;
 
   db.query('UPDATE users SET requestsNum = requestsNum + 1 WHERE id = ?', [id], (err, result) => {
@@ -93,6 +172,22 @@ router.put('/:id', (req, res) => {
 
 //Update user repliesNum by 1
 router.put('/replies/:id', (req, res) => {
+    // #swagger.description = 'Endpoint to increment the repliesNum of a user by their ID.'
+    // #swagger.summary = 'Increment repliesNum by user ID.'
+    /* #swagger.parameters['id'] = {
+            in: 'path',
+            type: 'string',
+            required: true,
+            description: 'The ID of the user.'
+    } */
+    /* #swagger.responses[500] = {
+        description: 'Internal server error.',
+        schema: { error: 'string' }
+    } */
+    /* #swagger.responses[200] = {
+          description: 'Successfully updated the user.',
+          schema: { message: 'string' }
+    } */
   const { id } = req.params;
 
   db.query('UPDATE users SET repliesNum = repliesNum + 1 WHERE id = ?', [id], (err, result) => {
