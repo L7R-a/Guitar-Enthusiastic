@@ -94,7 +94,7 @@ router.post('/', (req, res) => {
         if (err) {
           return res.status(500).json({ error: err.message });
         }
-        res.status(201).json({ id: result.insertId, username, email });
+        res.status(201).json({ id: result.insertId, username, email, name});
       });
     });
   })
@@ -138,6 +138,9 @@ router.post('/login', (req, res) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
+    if(results.length === 0){
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
     res.json(results[0]);
   });
 });
@@ -166,6 +169,11 @@ router.put('/:id', (req, res) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
+
+    if (result.affectedRows === 0) {
+      // If no rows were affected, it means the user ID was not found
+      return res.status(404).json({ error: 'User ID not found' });
+    }
     res.json(result);
   });
 });
@@ -193,6 +201,9 @@ router.put('/replies/:id', (req, res) => {
   db.query('UPDATE users SET repliesNum = repliesNum + 1 WHERE id = ?', [id], (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'User ID not found' });
     }
     res.json(result);
   });
