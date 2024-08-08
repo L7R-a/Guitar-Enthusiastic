@@ -66,7 +66,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
 
     return(
         <div className="flex flex-column px-8 py-5 gap-4 " style={{ borderRadius: '12px' }}>
-        <Image src={Logo} width="75" height="75" className="block mx-auto Logo" />
+        <Image src={Logo} width="75" height="75" alt="Logo"className="block mx-auto Logo" />
         <p className="TitleInDialog close-spacing">Guitar Enthusiast</p>
         <p className="TitleInDialog close-spacing">Signup</p>
         <div className="inline-flex flex-row gap-2 align-items-center">
@@ -79,7 +79,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
                             </label>
                         </td>
                         <td>
-                            <InputText id="SignUpName" label="Username" onChange={(e)=>setSignupName(e.target.value)} > </InputText>
+                            <InputText data-testid="SignUpName" id="SignUpName" label="Username" onChange={(e)=>setSignupName(e.target.value)} > </InputText>
                         </td>
                     </tr>
                     <tr>
@@ -89,7 +89,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
                             </label>
                         </td>
                         <td>
-                            <InputText id="SignUpUsername" label="Username"  onChange={(e)=>setSignupUsername(e.target.value)}></InputText>
+                            <InputText data-testid="SignUpUsername" id="SignUpUsername" label="Username"  onChange={(e)=>setSignupUsername(e.target.value)}></InputText>
                         </td>
                     </tr>
                     <tr>
@@ -99,7 +99,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
                             </label>
                         </td>  
                         <td>
-                            <InputText id="SignUpEmail" label="Username"  onChange={(e)=>setSignupEmail(e.target.value)}></InputText>
+                            <InputText data-testid="SignUpEmail" id="SignUpEmail" label="Username"  onChange={(e)=>setSignupEmail(e.target.value)}></InputText>
                         </td>
                     </tr>
                     <tr>
@@ -109,7 +109,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
                             </label>
                         </td>
                         <td>
-                            <InputText id="SignUpPassword" label="Password" onChange={(e)=>setSignupPassword(e.target.value)} type="password"></InputText>
+                            <InputText data-testid="signUpPassword" id="SignUpPassword" label="Password" onChange={(e)=>setSignupPassword(e.target.value)} type="password"></InputText>
                         </td>
                     </tr>
                     <tr>
@@ -119,7 +119,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
                             </label>
                         </td>
                         <td>
-                            <InputText id="signUpRePassword" label="Password"  onChange={(e)=>setSignupRePassword(e.target.value)} type="password"></InputText>
+                            <InputText data-testid="signUpRePassword" id="signUpRePassword" label="Re-type Password"  onChange={(e)=>setSignupRePassword(e.target.value)} type="password"></InputText>
                         </td>
                     </tr>
                 </tbody>

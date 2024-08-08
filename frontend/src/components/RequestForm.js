@@ -97,7 +97,7 @@ function RequestForm({setVisibleRequest}) {
               <InputTextarea autoResize rows={5} cols={30} onChange={(e)=>setComment(e.target.value)}/>
           </div>
           <div className="flex align-items-center gap-2">
-              <Button label="Request" raised onClick={() => handleRequest()}  severity="success" className="p-2 w-full mr-3 DialogButtons"></Button>
+              <Button data-testid="request-buttonF" label="Request" raised onClick={() => handleRequest()}  severity="success" className="p-2 w-full mr-3 DialogButtons"></Button>
               <Button label="Cancel" raised onClick={(e) => setVisibleRequest(false)}  severity="danger" className="p-2 w-full mr-3 DialogButtons"></Button>
           </div>
     </div>

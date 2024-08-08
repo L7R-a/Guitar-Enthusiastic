@@ -71,7 +71,7 @@ function ToolBar({setIsEmptySearchTextVisible, hideSearch, setSearchResults}) {
     const endContent = (
         <React.Fragment>
             <Button label="Search" className='p-2  mr-3 ButtonsNav' onClick={() => navigate('/Search')} />
-            <Button label="Request" className='p-2  mr-3 ButtonsNav' onClick={() => setVisibleRequest(true)} />
+            <Button   data-testid="request-button" label="Request" className='p-2  mr-3 ButtonsNav' onClick={() => setVisibleRequest(true)} />
             <Button label="Profile" className='p-2  mr-3 ButtonsNav' onClick={() => setVisibleProfile(true)} />
             <Button label="Logout" className='p-2  mr-3 ButtonsNav' onClick={() => handleLogout()} />
         </React.Fragment>
