@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
@@ -16,9 +16,11 @@ const Login = ({hide, toast}) => {
             toast.current.show({ severity: 'error', summary: 'Error', detail: 'All fields are required', life: 5000 });
             return;
         }
+        // console.log(`API URL: ${process.env.REACT_APP_BACKEND_URL}/api/users/login`);
+
 
         // Fields are not null, login user
-        fetch(`http://localhost:5000/api/users/login`, {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

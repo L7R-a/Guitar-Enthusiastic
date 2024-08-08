@@ -2,9 +2,7 @@ import React, { useState, useRef} from "react";
 import { Dialog } from 'primereact/dialog';
 import { Row, Image, Container } from "react-bootstrap";
 import { Toolbar } from 'primereact/toolbar';
-import { useNavigate } from "react-router-dom";
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 import './LandingPage.css';
 import 'primeicons/primeicons.css';
 import Logo from './assets/images/Logo.png';
@@ -13,7 +11,6 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 
 function LandingPage() {
-    const navigate = useNavigate();  // useNavigate hook for navigation
     const toast = useRef(null);
 
     //Dialogs components

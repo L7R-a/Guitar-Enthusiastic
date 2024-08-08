@@ -56,17 +56,16 @@ function Profile() {
 
     // Link formattings
     const bodyLink = (rowData) => (
-        <a href={`http://localhost:3000${rowData.link}`}>Link</a>
+        <a href={`${process.env.REACT_APP_BASE_URL}${rowData.link}`}>Link</a>
     );
     const bodyLinkReplies = (rowData) => (
-        <a href={`http://localhost:3000/Request/${rowData.request_id}`}>Link</a>
+        <a href={`${process.env.REACT_APP_BASE_URL}/Request/${rowData.request_id}`}>Link</a>
     );
-
 
 
     // fetch user requests and replies
     useEffect(() => {
-        fetch(`http://localhost:5000/api/requests/user/${personalInfo.id}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/requests/user/${personalInfo.id}`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
@@ -81,7 +80,7 @@ function Profile() {
             .catch((err) => {
                 console.error('Error fetching data:', err);
             });
-        fetch(`http://localhost:5000/api/replies/user/${personalInfo.id}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/replies/user/${personalInfo.id}`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');

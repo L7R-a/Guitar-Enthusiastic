@@ -36,7 +36,7 @@ function RequestPage() {
 
     useEffect(() => {
         // Fetch the request details based on the ID request
-        fetch(`http://localhost:5000/api/requests/${id}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/requests/${id}`)
         .then(response => response.json())
         .then(data => {setRequest(data); 
             setLoading(false); // Data loaded  
@@ -46,7 +46,7 @@ function RequestPage() {
             setLoading(false); // Done loading
         });
         // Fetch the replies based on the ID request
-        fetch(`http://localhost:5000/api/replies/${id}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/replies/${id}`)
         .then(response => response.json())
         .then(data => setReplies(data))
         .catch(error => console.error('Error fetching replies:', error));
@@ -69,7 +69,7 @@ function RequestPage() {
         formData.append('song', request.song);
         formData.append('artist', request.artist);
     
-        fetch('http://localhost:5000/api/replies/', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/replies/`, {
             method: 'POST',
             body: formData
         })
@@ -82,14 +82,14 @@ function RequestPage() {
         })
         .then(data => {
             //Call API to update user's repliesNum in database
-            fetch(`http://localhost:5000/api/users/replies/${ personalInfo.id}`, {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/replies/${ personalInfo.id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
             }
             });
             //Call API to update number_of_replies of the request in database
-          fetch(`http://localhost:5000/api/requests/${id}`, {
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/api/requests/${id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'

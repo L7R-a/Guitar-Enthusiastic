@@ -5,7 +5,6 @@ import ToolBar from './components/ToolBar.js';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { FaUser, FaMusic, FaMicrophone} from 'react-icons/fa';
-import { propTypes } from 'react-bootstrap/esm/Image.js';
 
 function Search() {
     const [isEmptySearchTextVisible, setIsEmptySearchTextVisible] = React.useState(true); //Check if the user has entered a search text
@@ -18,7 +17,7 @@ function Search() {
         // If there's saved search text, it means the search bar isn't empty. Fetch the search results
         if (searchText) { 
           setIsEmptySearchTextVisible(false);
-          fetch(`http://localhost:5000/api/requests/search/${searchText}`)
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/api/requests/search/${searchText}`)
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error('Network response was not ok');

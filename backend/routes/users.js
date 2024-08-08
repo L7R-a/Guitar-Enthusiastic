@@ -99,10 +99,6 @@ router.post('/', (req, res) => {
     });
   })
 
-  //TODO: Do testing for mocca for this endpoint
-  //TODO: Change Localhost to url in frontend & backend.
-  //TODO: Wait how to figure out testing for react.
-
 // Get a user by their username and password
 router.post('/login', (req, res) => {
       // #swagger.description = 'Endpoint to login a user by their username and password.'

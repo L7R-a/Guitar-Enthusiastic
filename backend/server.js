@@ -28,11 +28,12 @@ app.use('/api/users', userRoutes); // USE USERS ROUTES IF THE URL IS /api/users
 app.use('/api/requests', requestRoutes); // USE REQUESTS ROUTES IF THE URL IS /api/requests
 app.use('/api/replies', replyRoutes);  // USE REPLIES ROUTES IF THE URL IS /api/replies
 
-
-var options = {}
-app.use('/api-docs-users',swaggerUi.serveFiles(swaggerUsers, options), swaggerUi.setup(swaggerUsers));
-app.use('/api-docs-requests',swaggerUi.serveFiles(swaggerRequests, options), swaggerUi.setup(swaggerRequests));
-app.use('/api-docs-replies',swaggerUi.serveFiles(swaggerReplies, options), swaggerUi.setup(swaggerReplies));
+if (process.env.NODE_ENV !== 'production') {
+  var options = {}
+  app.use('/api-docs-users',swaggerUi.serveFiles(swaggerUsers, options), swaggerUi.setup(swaggerUsers));
+  app.use('/api-docs-requests',swaggerUi.serveFiles(swaggerRequests, options), swaggerUi.setup(swaggerRequests));
+  app.use('/api-docs-replies',swaggerUi.serveFiles(swaggerReplies, options), swaggerUi.setup(swaggerReplies));
+}
 
 
 // START SERVER

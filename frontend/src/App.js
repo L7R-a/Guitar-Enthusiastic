@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import LandingPage from './LandingPage.js';
 import Search from './Search.js';
 import RequestPage from './RequestPage.js';

@@ -39,7 +39,7 @@ function RequestForm({setVisibleRequest}) {
     
       try {
         // Call API to add new request
-        const response = await fetch('http://localhost:5000/api/requests', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/requests`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ function RequestForm({setVisibleRequest}) {
           // console.log(response);
 
           //Call API to update requestNum from user in database
-          await fetch(`http://localhost:5000/api/users/${userId}`, {
+          await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${userId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'

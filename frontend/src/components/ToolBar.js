@@ -29,7 +29,7 @@ function ToolBar({setIsEmptySearchTextVisible, hideSearch, setSearchResults}) {
             setIsEmptySearchTextVisible(false);
     
             // Fetch requests from the server
-            fetch(`http://localhost:5000/api/requests/search/${value}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/api/requests/search/${value}`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');

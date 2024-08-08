@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Image } from 'primereact/image';
 import Logo from '../assets/images/Logo.png';
@@ -35,7 +35,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
         }
 
         //All fields are valid, create a new user
-        fetch('http://localhost:5000/api/users', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,6 +59,7 @@ const Signup = ({ hide , setVisibleSignup, setVisibleLogin, toast }) => {
             setVisibleLogin(true);  
         })
         .catch(error => {
+            if(toast !== null && toast.current !== null) 
             toast.current.show({severity:'error', summary: 'Error', detail:error.message, life: 5000});
             return;
         });
