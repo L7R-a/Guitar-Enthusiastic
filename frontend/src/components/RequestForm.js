@@ -62,10 +62,15 @@ function RequestForm({setVisibleRequest}) {
           var userUpdate = JSON.parse(localStorage.getItem('user'));
           userUpdate.requestsNum += 1;
           localStorage.setItem('user', JSON.stringify(userUpdate));
+          
+          toast.current.show({severity: 'success', summary: 'Success', detail: 'Request added successfully', life: 5000});
 
+          localStorage.setItem('requestSuccess', "true");
+          setVisibleRequest(false);
           navigate(link);
         } else {
           console.error('Failed to add request');
+          toast.current.show({severity: 'error', summary: 'Error', detail: 'Failed to add request', life: 5000});
         }
       } catch (error) {
         console.error('Error:', error);

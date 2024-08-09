@@ -210,7 +210,10 @@ function RequestPage() {
     if (!request) {
         return <div>No request found.</div>;
     }
-
+    if( toast.current !== null && localStorage.getItem('requestSuccess')    === 'true'){
+        toast.current.show({severity: 'success', summary: 'Request Success', detail: 'Your request has been successfully submitted',life: 4000});        
+        localStorage.setItem('requestSuccess', "false");
+    } 
     return (
         <Container fluid className="main-containerRequest">
             <Toast ref={toast}></Toast>
