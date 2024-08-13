@@ -15,6 +15,7 @@ const replyRoutes = require('./routes/replies'); // IMPORT ENDPOINTS FOR REPLIES
 
 //INITIALIZERS
 const app = express(); // INITIALIZE EXPRESS
+app.use(express.static('public')); // SERVE STATIC FILES
 dotenv.config(); // GET CREDS FROM .ENV FILE
 const port = process.env.PORT || 5000; // SET PORT USING THOSE CREDENTIALS OR 5000
 app.use(cors()); // APPLY SECURITY MEASURES

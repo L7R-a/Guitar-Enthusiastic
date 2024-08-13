@@ -14,35 +14,35 @@ const db = require('../db'); // GET DATABASE CONNECTION (note: ../db because db 
 
 // GET ALL USERS
 // Specify the method and path for this endpoint. req is the input received, res is the output that will be sent.
-router.get('/', (req, res) => {
-    // #swagger.description = 'Endpoint to retrieve all users.'
-    // #swagger.summary = 'Get all users.'
-    /* #swagger.responses[500] = {
-        description: 'Internal server error.',
-        schema: { error: 'string' }
-    } */
-    /* #swagger.responses[200] = {
-          description: 'Successfully retrieved all users.',
-          schema: [{
-            id: 'number',
-            username: 'string',
-            name: 'string',
-            email: 'string',
-            password: 'string',
-            requestsNum: 'number',
-            repliesNum: 'number'
-          }]
-    } */
+// router.get('/', (req, res) => {
+//     // #swagger.description = 'Endpoint to retrieve all users.'
+//     // #swagger.summary = 'Get all users.'
+//     /* #swagger.responses[500] = {
+//         description: 'Internal server error.',
+//         schema: { error: 'string' }
+//     } */
+//     /* #swagger.responses[200] = {
+//           description: 'Successfully retrieved all users.',
+//           schema: [{
+//             id: 'number',
+//             username: 'string',
+//             name: 'string',
+//             email: 'string',
+//             password: 'string',
+//             requestsNum: 'number',
+//             repliesNum: 'number'
+//           }]
+//     } */
 
-  //Query the database for all users. 
-  db.query('SELECT * FROM users', (err, results) => {         //(err, results) is a callback function that will be called when the query is done.
-    if (err) {
-      return res.status(500).json({ error: err.message });    // If there is an error, return a 500 status code with the error message.
-    }
-    res.json(results);                                        // If there is no error, return the db results as JSON.
+//   //Query the database for all users. 
+//   db.query('SELECT * FROM users', (err, results) => {         //(err, results) is a callback function that will be called when the query is done.
+//     if (err) {
+//       return res.status(500).json({ error: err.message });    // If there is an error, return a 500 status code with the error message.
+//     }
+//     res.json(results);                                        // If there is no error, return the db results as JSON.
 
-  });
-});
+//   });
+// });
 
 // ADD A NEW USER
 router.post('/', (req, res) => {
