@@ -28,16 +28,13 @@ jobs:
 
       - name: Build the React app
         run: |
-          cd frontend 
-          npm install
+          cd frontend
           npm run build
 
       - name: Zip artifact for deployment
         run: |
           cd frontend
-          npm run build
-          zip -r ../release.zip ./build
-
+          zip -r ../release.zip build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -62,7 +59,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
+      
       - name: List files in deployment directory
         run: ls -R
       
@@ -79,5 +76,4 @@ jobs:
         with:
           app-name: 'guitarenthusiast'
           slot-name: 'Production'
-          package: ./release.zip
-          
+          package: ./build
