@@ -34,7 +34,7 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           cd frontend
-          zip -r release.zip build
+          zip -r ../release.zip build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -76,4 +76,4 @@ jobs:
         with:
           app-name: 'guitarenthusiast'
           slot-name: 'Production'
-          package: ./frontend/build
+          package: ./build
