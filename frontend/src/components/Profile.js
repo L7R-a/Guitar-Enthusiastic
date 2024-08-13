@@ -94,7 +94,7 @@ function Profile() {
             .catch((err) => {
                 console.error('Error fetching data:', err);
             });
-    },[])
+    },[personalInfo.id])
 
 
     return (
