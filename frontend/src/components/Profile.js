@@ -4,6 +4,8 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import 'primeicons/primeicons.css';
 import {Card} from 'primereact/card';
+import { Link } from 'react-router-dom';
+
 
 function Profile() {
     const [passwordVisible, setPasswordVisible] = useState({});
@@ -56,10 +58,15 @@ function Profile() {
 
     // Link formattings
     const bodyLink = (rowData) => (
-        <a href={`${process.env.REACT_APP_BASE_URL}${rowData.link}`}>Link</a>
+        <Link to={`${process.env.REACT_APP_BASE_URL}${rowData.link}`}>
+            Link
+        </Link>
+
     );
     const bodyLinkReplies = (rowData) => (
-        <a href={`${process.env.REACT_APP_BASE_URL}/Request/${rowData.request_id}`}>Link</a>
+        <Link to={`${process.env.REACT_APP_BASE_URL}/Request/${rowData.request_id}`}>
+            Link
+        </Link>
     );
 
 
