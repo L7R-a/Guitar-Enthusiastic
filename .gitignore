@@ -109,3 +109,4 @@ pnpm-lock.yaml
 
 # Webpack's intermediate directory
 .cache-loader/
+backend/DigiCertGlobalRootCA.crt.pem

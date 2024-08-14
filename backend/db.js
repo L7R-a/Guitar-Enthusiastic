@@ -1,6 +1,7 @@
 //IMPORTS
 const mysql = require('mysql2'); // IMPORT MYSQL LIBRARY TO CONNECT TO DATABASE
 const dotenv = require('dotenv'); // IMPORT CREDENTIALS OF DATABASE
+const fs = require('fs');
 
 //INITIALIZER
 dotenv.config(); // GET CREDS FROM .ENV FILE
@@ -10,7 +11,8 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+  ssl:{ca:fs.readFileSync(process.env.DB_SSL)}
 });
 
 //TRY TO ACTUALLY CONNECT TO THE DATABASE

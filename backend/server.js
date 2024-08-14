@@ -18,6 +18,7 @@ const app = express(); // INITIALIZE EXPRESS
 app.use(express.static('public')); // SERVE STATIC FILES
 dotenv.config(); // GET CREDS FROM .ENV FILE
 const port = process.env.PORT || 5000; // SET PORT USING THOSE CREDENTIALS OR 5000
+console.log('DB_PORT', process.env.DB_PORT);
 app.use(cors()); // APPLY SECURITY MEASURES
 app.use(express.json()); // ALLOW JSON INPUT FOR APIs
 
