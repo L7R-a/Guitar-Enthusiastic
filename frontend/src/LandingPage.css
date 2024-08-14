@@ -1,14 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
+@font-face {
+    font-family: 'Noto Serif';
+    src: url('./assets/fonts/Noto_Serif/static/NotoSerif_Condensed-ExtraBold.ttf') format('truetype');
+    font-weight: 100 900; /* Adjust according to the weight range of the variable font */
+    font-stretch: 50% 150%;
+  }
 .main-container {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: "Lemands";
+    font-family: "Noto Serif";
 }
 
 .LandingTitle{
-    font-family: "Lemands";
+    font-family: "Noto Serif";
     font-size: 4rem;
     font-weight: bold;
     margin: 10px;
@@ -58,14 +63,14 @@
 }
 
 .LandingCards {
-    font-family: "Lemands";
+    font-family: "Noto Serif";
     font-family:"Roboto";
     font-size: large;
      font-weight: bold;
      border: 10px solid #ddcdcd;
  }
 .LandingCards .p-dialog-header {
-   font-family: "Lemands";
+   font-family: "Noto Serif";
    font-size: 5rem !important;
    text-align: center;
     font-weight: bold;

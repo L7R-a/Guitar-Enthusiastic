@@ -1,5 +1,10 @@
 @import 'primeflex/primeflex.css';
-
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('./assets/fonts/Noto_Serif/static/NotoSerif_Condensed-ExtraBold.ttf') format('truetype');
+  font-weight: 100 900; /* Adjust according to the weight range of the variable font */
+  font-stretch: 50% 150%;
+}
 .App {
   text-align: center;
 }
@@ -150,7 +155,7 @@
 .main-containerRequest{
   display: flex;
   flex-direction: column;
-  font-family: "Lemands";
+  font-family: "Noto Serif";
 }
 
 .searchText{
@@ -234,7 +239,7 @@
 }
 
 .TitleInDialog {
-  font-family: "Lemands";
+  font-family: "Noto Serif";
   font-size: xx-large;
   font-weight: bold;
   text-align: center;
