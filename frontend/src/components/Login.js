@@ -29,12 +29,13 @@ const Login = ({hide, toast}) => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data) {
+                if (!data.error) {
                     localStorage.setItem('user', JSON.stringify(data));
                     localStorage.setItem('searchText', "");
                     navigate('/Search');
                 } else {
                     toast.current.show({ severity: 'error', summary: 'Error', detail: 'Invalid username or password', life: 5000 });
+                    return;
                 }
             })
             .catch(error => {
